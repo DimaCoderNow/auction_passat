@@ -226,7 +226,7 @@ modalImage.addEventListener('touchmove', (e) => {
 
 modalImage.addEventListener('touchend', () => {
     const swipeThreshold = 50; // Порог для определения свайпа
-
+    if (touchEndX === 0) return
     if (touchStartX - touchEndX > swipeThreshold) {
         // Пользователь свайпнул влево (следующее изображение)
         nextButton();
@@ -234,6 +234,7 @@ modalImage.addEventListener('touchend', () => {
         // Пользователь свайпнул вправо (предыдущее изображение)
         prevButton();
     }
+    touchEndX = 0;
 });
 
 // Отобразить модальное окно с изображением

@@ -402,7 +402,7 @@ footer:hover {
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
     background-size: 500% auto;
-    animation: textShine 3s ease-in-out 2;
+    animation: textShine 3s linear infinite alternate;
 }
       @keyframes textShine {
     0% {
