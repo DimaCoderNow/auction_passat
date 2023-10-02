@@ -13,7 +13,7 @@ body {
     height: 100vh;
     color: #eeeeee;
     font-size: 25px;
-  	padding-top: 100px;
+  	padding-top: 410px;
   	padding-bottom: 140px;
 }
 .timer {
@@ -31,10 +31,10 @@ body {
 }
 .timer__items {
     display: flex;
-    font-size: 78px;
+    font-size: 88px;
     border: 3px solid;
     border-radius: 15px;
-    background-color: #242424;
+    background-color: black;
     }
 
 .timer__item {
@@ -63,7 +63,7 @@ body {
     }
 
 header {
-    background-color: black;
+    background-color: #242424;
     position: fixed;
     top: 0;
     left: 0;
@@ -74,7 +74,7 @@ header {
 h1 {
     font-size: 65px;
     text-align: center;
-    padding: 15px;
+    padding-top: 10px;
     color: #58A931;
 }
 h2 {
@@ -85,6 +85,9 @@ h2 {
 }
 hr {
     margin: 15px 0;
+}
+.top-info{
+    position: fixed;
 }
 .overlay {
     position: fixed;
@@ -298,13 +301,13 @@ footer:hover {
 }
 
 .placeholder {
-  color: #65657b;
-  font-family: sans-serif;
+  position: absolute;
+  pointer-events: none;
   left: 30px;
   line-height: 60px;
+  font-family: sans-serif;
+  color: #65657b;
   font-size: 50px;
-  pointer-events: none;
-  position: absolute;
   transform-origin: 0 50%;
   transition: transform 200ms, color 200ms;
   top: 27px;

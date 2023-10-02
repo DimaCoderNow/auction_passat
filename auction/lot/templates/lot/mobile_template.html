@@ -11,11 +11,7 @@
 <body>
     <header>
         <h1>Passat B4 1995г.</h1>
-    </header>
-
-    <main>
-        <div class="container">
-            <h2>Аукцион завершится через:</h2>
+         <h2>Аукцион завершится через:</h2>
             <div class="timer">
                 <div class="timer__items">
                     <div class="timer__item timer__days">00</div>
@@ -24,11 +20,15 @@
                     <div class="timer__item timer__seconds">00</div>
                 </div>
             </div>
+            <h2 class="best-bed">Текущая ставка: {{max_bid}} руб.</h2>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <hr>
 
             <div class="description">
-
-            <h2 class="best-bed">Текущая ставка: {{max_bid}} руб.</h2>
-            <hr>
                 <div class="description-content">
                     <ul>
                         <li>Фольксваген Пассат В4 1995 г.в</li>
@@ -128,17 +128,17 @@
          <div class="input-container ic1">
             {{ form.user_name }}
             <div class="cut"></div>
-            <label for="user_name" class="placeholder">Ваше имя</label>
+            <label class="placeholder">Ваше имя</label>
          </div>
          <div class="input-container ic2">
             {{ form.phone }}
             <div class="cut cut-long"></div>
-            <label for="phone" class="placeholder">Номер телефона</label>
+            <label class="placeholder">Номер телефона</label>
          </div>
          <div class="input-container ic2">
             {{ form.amount }}
             <div class="cut "></div>
-            <label for="amount" class="placeholder">Ваша ставка, шаг 2000 руб.</label>
+            <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
          </div>
          <button type="submit" class="submit">Сделать ставку</button>
      </form>
@@ -282,7 +282,7 @@ function prevButton(){
         currentIndex = images.length - 1;
         modalImage.src = images[currentIndex].getAttribute('src');
     }
-};
+}
 
 // Переключение на следующее изображение
 function nextButton(){
@@ -293,7 +293,7 @@ function nextButton(){
         currentIndex = 0;
         modalImage.src = images[currentIndex].getAttribute('src');
     }
-};
+}
 
     </script>
 
