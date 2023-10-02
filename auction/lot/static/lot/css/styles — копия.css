@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(38, 38, 38, 0.82);
+    height: 100vh;
+    color: #eeeeee;
+    font-size: 25px;
+    margin: 0; /* Убедитесь, что у body нет отступов по умолчанию */
+    padding: 0; /* Убедитесь, что у body нет отступов по умолчанию */
+  	padding-top: 126px
+}
+
+header {
+    background-color: black;
+    position: fixed; /* Закрепляем header */
+    top: 0; /* Закрепляем header вверху страницы */
+    left: 0;
+    width: 100%; /* Растягиваем header на всю ширину экрана */
+    z-index: 100; /* Устанавливаем z-index, чтобы header был выше других элементов */
+}
+
+h1 {
+    font-size: 65px;
+    text-align: center;
+    padding: 15px;
+    color: #58A931;
+}
+h2 {
+    text-align: center;
+    padding: 15px;
+    color: #ffb700;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный цвет */
+    display: none; /* Начальное состояние - невидимый */
+}
+.container {    
+    margin: 0 auto;
+}
+.description {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container .img-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.container .img-container .img {
+    width: 350px;
+    height: 250px;
+    border: 6px solid #fff;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.container .img-container .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.container .img-container .img:hover img {
+    transform: scale(1.1);
+}
+.description_image {
+    position: relative;
+
+    border: 6px solid #fff;
+    overflow: hidden;
+}
+video {
+    width: 70%;
+}
+
+.container .pop-up {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 1;
+    display: none;
+}
+
+.container .pop-up span {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-size: 50px;
+    font-weight: 900;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.container .pop-up img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 8px;
+    width: 900px;
+}
+
+.prev-button,
+.next-button {
+    position: absolute; /* Установите абсолютное позиционирование */
+    top: 80%; /* Разместите кнопки по вертикали по центру контейнера */
+    transform: translateY(-50%); /* Центрирование кнопок вертикально */
+    height: 50px;
+    color: white;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.prev-button {
+    left: 30%; /* Разместите кнопку "Назад" слева от контейнера */
+}
+
+.next-button {
+    right: 30%; /* Разместите кнопку "Вперед" справа от контейнера */
+}
+
+main {
+    position: relative;
+}
+footer {
+    height: 80px;
+    background-color: rgb(0 0 0 / 70%);
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    border-radius: 15px;
+    cursor: pointer;
+}
+footer:hover {
+    background-color: rgb(0 0 0 / 100%);
+    border: 1px solid #ffb700;
+    transition-delay: 0.2s;
+
+}
+/*@media (max-width:768px) {*/
+/*    .container {*/
+/*        width: 95%;*/
+/*    }*/
+/*}*/
+
+.form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 576px;
+  padding: 40px;
+  width: 500px;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 72px; /* Увеличиваем размер шрифта */
+  font-weight: 600;
+  margin-top: 60px; /* Увеличиваем отступ сверху */
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 32px; /* Увеличиваем размер шрифта */
+  font-weight: 600;
+  margin-top: 20px; /* Увеличиваем отступ сверху */
+}
+
+.input-container {
+  height: 80px; /* Увеличиваем высоту контейнера */
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 20px; /* Увеличиваем отступ сверху */
+}
+
+.ic2 {
+  margin-top: 60px; /* Увеличиваем отступ сверху */
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 24px; /* Увеличиваем радиус границы */
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 26px; /* Увеличиваем размер шрифта */
+  height: 100%;
+  outline: 0;
+  padding: 8px 40px 0; /* Увеличиваем отступы внутри элемента */
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 20px; /* Увеличиваем радиус границы */
+  height: 40px; /* Увеличиваем высоту */
+  left: 14px; /* Увеличиваем отступ слева */
+  position: absolute;
+  top: -40px; /* Увеличиваем отступ сверху */
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 120px; /* Увеличиваем ширину */
+}
+
+.cut-short {
+  width: 145px; /* Увеличиваем ширину */
+}
+
+.cut-long {
+  width: 182px; /* Увеличиваем ширину */
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(10px);
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #808097;
+}
+
+.input:focus ~ .placeholder {
+  color:#58A931;
+}
+
+.submit {
+  background-color: #e3bc5a;
+  border-radius: 15px;
+  border: 0;
+  box-sizing: border-box;
+  color: #1e6118;
+  cursor: pointer;
+  font-size: 28px;
+  height: 60px;
+  margin-top: 40px;
+  // outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}

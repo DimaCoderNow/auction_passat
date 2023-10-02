@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" href="{% static 'lot/css/styles.css' %}" rel="stylesheet" />
+    <title>Аукцион</title>
+
+
+</head>
+<body>
+    <header>
+        <h1>Passat B4 1995г.</h1>
+    </header>
+
+    <main>
+    <div class="container">
+        <div class="description">
+            <div class="left-container">
+                <div class="bed-container">
+                    <h2>Аукцион завершится через:</h2>
+                    <div class="timer">
+                        <div class="timer__items">
+                            <div class="timer__item timer__days">00</div>
+                            <div class="timer__item timer__hours">00</div>
+                            <div class="timer__item timer__minutes">00</div>
+                            <div class="timer__item timer__seconds">00</div>
+                        </div>
+                    </div>
+                    <h2 class="best-bed">Текущая ставка: {{max_bid}} руб.</h2>
+                    <h3 class="top-bed">Топ предложений:</h3>
+                    <ul>
+                        {% for bid in bids %}
+                            <li>{{bid.user_name}}: {{ bid.amount }} - {{ bid.created_at|date:"d.m.Y" }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="make-bed" onclick="showForm()">
+                        <h2 class="shimmer-text">ПРЕДЛОЖИТЬ ЦЕНУ</h2>
+                    </div>
+                </div>
+            </div>
+            <video height="100%" id="myVideo" src="{{ MEDIA_URL }}WV 01.mp4" autoplay muted controls></video>
+        </div>
+
+        <div class="description-content">
+            <div class="content-left">
+                <p>
+                    Фольксваген Пассат В4 1995 г.в пригнали в 2012 году под документы.<br>
+                    По документам 1988 года выпуска.
+                </p>
+                <table>
+                      <tr>
+                        <td>Кузов - Седан</td>
+                        <td>Передние стеклоподъемники</td>
+                      </tr>
+                      <tr>
+                        <td>КПП - Механика</td>
+                        <td>Гидроусилитель руля</td>
+                      </tr>
+                    <tr>
+                        <td>Мощность -  85квт/116л.с</td>
+                        <td>Растаможен на область</td>
+                    </tr>
+                </table>
+
+                <p>
+                    Все отметки о замене двигателя и кузова стоят в ПТС(есть фото)
+                    Ездил пенсионер на дачу и на рыбалку, 2 года автомобиль стоял в гараже.
+                    По кузову нет нареканий, крепкий, целый, в ДТП не был.
+                </p>
+                <h4 class="paragraph-title">Что успели заменить:</h4>
+                <p>
+                    - все новые тормозные диски и колодки<br>
+                    - наконечник рул.тяги лев<br>
+                    - пыльник рул.рейки<br>
+                    - шланг тормозной<br>
+                    - пыльник ШРУСа внутр.<br>
+                    - ремкомплект суппорта 2шт<br>
+                    - подшипник ступицы зад. 2 шт.<br>
+                    - развал схождение
+                </p>
+                <p class="last-p"                >
+                    Продажа по ДКП и Свидетельству о Праве на Наследство(это все что вам надо для
+                    перерегистрации в МРЭО)
+                </p>
+            </div>
+            <div class="content-right">
+                <h4 class="paragraph-title">Что требуется заменить/сделать:</h4>
+                <p class="last-p">
+                    - задний сальник коленвала<br>
+                    - прокладка крышки переднего сальника<br>
+                    - прокладка поддона ДВС<br>
+                    - уплотн. трубки сапуна<br>
+                    - боковой фланец ГБЦ<br>
+                    - задний фланец ГБЦ<br>
+                    - помпа<br>
+                    - уплотнитель корпуса помпы<br>
+                    - шланги печки<br>
+                    - приводные ремни<br>
+                    - передний сальник коленвала<br>
+                    - привод ГРМ<br>
+                    - Требуется перетяжка потолка<br>
+                    - Из 4х дверей открывается только задняя левая, проблема в ручках дверей<br>
+                    - Водительская дверь сильно провисла, требуется замена петель<br>
+                    - Глушить под замену<br>
+                    - Местами отклеилась тонировка.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="img-container">
+            {% for url_img in photo %}
+                <div class="img">
+                    <img src="{{ MEDIA_URL }}{{url_img.description}}">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pop-up">
+            <div class="wrapper-modal-image">
+                <img src="{% static 'lot/img/close_button.svg' %}" class="close-button">
+                <img src="{% static 'lot/img/prev_button.svg' %}" id="prev-button">
+                <img src="" alt="Modal Image" class="modal-image">
+                <img src="{% static 'lot/img/next_button.svg' %}" id="next-button">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="overlay"></div>
+    <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <div class="input-container ic1">
+           {{ form.user_name }}
+           <div class="cut"></div>
+           <label for="user_name" class="placeholder">Ваше имя</label>
+        </div>
+        <div class="input-container ic2">
+           {{ form.phone }}
+           <div class="cut cut-second"></div>
+           <label for="phone" class="placeholder">Номер телефона</label>
+        </div>
+        <div class="input-container ic2">
+           {{ form.amount }}
+           <div class="cut cut-third"></div>
+           <label for="amount" class="placeholder">Ваша ставка, шаг 2000 руб.</label>
+        </div>
+        <button type="submit" class="submit">Сделать ставку</button>
+    </form>
+
+    </main>
+
+    <footer class="open-form">
+        <img src="{% static 'lot/img/top_button.svg' %}" class="top-button">
+        <div class="make-bed bed-footer">
+            <h2 class="shimmer-text">ПРЕДЛОЖИТЬ ЦЕНУ</h2>
+        </div>
+    </footer>
+
+    <script>
+        const images = document.querySelectorAll('.img-container img');
+        const modal = document.querySelector('.pop-up');
+        const modalImage = document.querySelector('.modal-image');
+        const closeButton = document.querySelector('.close-button');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const topButton = document.querySelector('.top-button');
+        const overlay = document.querySelector('.overlay');
+        const openForm = document.querySelector('.bed-footer');
+        const betForm = document.querySelector('.form');
+        let currentIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // конечная дата
+            const deadline = new Date({{ dead_time_str }});
+            // id таймера
+            let timerId = null;
+            // склонение числительных
+            function declensionNum(num, words) {
+              return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+            }
+            // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+            function countdownTimer() {
+                const diff = deadline - new Date();
+                if (diff <= 0) {
+                    clearInterval(timerId);
+                }
+                const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+                const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+                const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+                const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+                $days.textContent = days < 10 ? '0' + days : days;
+                $hours.textContent = hours < 10 ? '0' + hours : hours;
+                $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+                $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+                $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
+                $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
+                $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
+                $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+            }
+          // получаем элементы, содержащие компоненты даты
+          const $days = document.querySelector('.timer__days');
+          const $hours = document.querySelector('.timer__hours');
+          const $minutes = document.querySelector('.timer__minutes');
+          const $seconds = document.querySelector('.timer__seconds');
+          // вызываем функцию countdownTimer
+          countdownTimer();
+          // вызываем функцию countdownTimer каждую секунду
+          timerId = setInterval(countdownTimer, 1000);
+        });
+
+        // Отобразить модальное окно с изображением
+        images.forEach((img, index) => {
+            img.onclick = () => {
+                modal.style.display = 'block';
+                modalImage.src = img.getAttribute('src');
+                currentIndex = index;
+                overlay.style.display = 'block'; // Показать overlay
+            };
+        });
+
+        // Закрыть модальное окно и overlay
+        function closeModal() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+            betForm.style.display = 'none';
+            openForm.style.display = 'block';
+        }
+
+        function showForm() {
+            closeModal()
+            if (betForm.style.display === 'block') {
+                betForm.style.display = 'none';
+                openForm.style.display = 'block';
+                overlay.style.display = 'none';
+            } else {betForm.style.display = 'block';
+                    openForm.style.display = 'none';
+                    overlay.style.display = 'block';
+            }
+        }
+        closeButton.onclick = closeModal;
+        openForm.onclick = showForm;
+
+        // Добавьте обработчик события клика на overlay для закрытия модального окна
+        overlay.onclick = closeModal;
+
+        // Переключение на предыдущее изображение
+        prevButton.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                modalImage.src = images[currentIndex].getAttribute('src');
+            } else {
+                currentIndex = images.length - 1;
+                modalImage.src = images[currentIndex].getAttribute('src');
+            }
+        });
+
+        // Переключение на следующее изображение
+        nextButton.addEventListener('click', function (){
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                modalImage.src = images[currentIndex].getAttribute('src');
+            } else {
+                currentIndex = 0;
+                modalImage.src = images[currentIndex].getAttribute('src');
+            }
+        });
+
+        topButton.addEventListener('click', function (){
+            // Прокрутка страницы к верху
+            document.body.scrollTop = 0; // Для поддержки старых браузеров
+            document.documentElement.scrollTop = 0; // Для современных браузеров
+        });
+        window.addEventListener('beforeunload', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
+
+</body>
+</html>
