@@ -32,7 +32,7 @@ def index(request):
     context = {
         'form': form,
         'bids': bids,
-        'max_bid': max_bid,
+        'max_bid': int(max_bid),
         'photo': images,
         'MEDIA_URL': MEDIA_URL,
         'dead_time_str': dead_time_str,

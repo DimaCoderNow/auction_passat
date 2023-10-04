@@ -27,7 +27,7 @@
                             <div class="timer__item timer__seconds">00</div>
                         </div>
                     </div>
-                    <h2 class="best-bed">Текущая ставка: {{max_bid}} руб.</h2>
+                    <h2 class="best-bed">Текущая ставка: {{ max_bid }} руб.</h2>
                     <h3 class="top-bed">Топ предложений:</h3>
                     <ul>
                         {% for bid in bids %}
@@ -133,17 +133,17 @@
         <div class="input-container ic1">
            {{ form.user_name }}
            <div class="cut"></div>
-           <label for="user_name" class="placeholder">Ваше имя</label>
+           <label class="placeholder">Ваше имя</label>
         </div>
         <div class="input-container ic2">
            {{ form.phone }}
            <div class="cut cut-second"></div>
-           <label for="phone" class="placeholder">Номер телефона</label>
+           <label class="placeholder">Номер телефона</label>
         </div>
         <div class="input-container ic2">
            {{ form.amount }}
            <div class="cut cut-third"></div>
-           <label for="amount" class="placeholder">Ваша ставка, шаг 2000 руб.</label>
+           <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
         </div>
         <button type="submit" class="submit">Сделать ставку</button>
     </form>
