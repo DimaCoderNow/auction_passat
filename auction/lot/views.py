@@ -3,11 +3,29 @@ from django_user_agents.utils import get_user_agent
 from django.db.models import Max
 
 from auction.settings import MEDIA_URL
-from .models import Bid, Photo
+from .models import Bid, Photo, ViewsCount
 from .forms import BidForm
 
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+def count_views(request):
+    ip = get_client_ip(request)
+    views_count_instance, created = ViewsCount.objects.get_or_create(ip=ip)
+    if not created:
+        views_count_instance.views_count += 1
+    views_count_instance.save()
+
+
 def index(request):
+    count_views(request)
     user_agent = get_user_agent(request)
     if user_agent.is_mobile:
         template = 'lot/mobile_template.html'
@@ -32,7 +50,7 @@ def index(request):
     context = {
         'form': form,
         'bids': bids,
-        'max_bid': int(max_bid),
+        'max_bid': max_bid,
         'photo': images,
         'MEDIA_URL': MEDIA_URL,
         'dead_time_str': dead_time_str,

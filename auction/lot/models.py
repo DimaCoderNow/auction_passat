@@ -25,6 +25,16 @@ class Photo(models.Model):
         verbose_name_plural = "Фотографии"
 
 
+class ViewsCount(models.Model):
+    ip = models.CharField(max_length=100)
+    views_count = models.IntegerField(default=1)
+    first_view = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Счетчик просмотров"
+        verbose_name_plural = "Счетчик просмотров"
+
+
 @admin.register(Bid)
 class BidAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'phone', 'amount', 'created_at')
@@ -37,3 +47,8 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'image_url', 'uploaded_at')
     list_filter = ('uploaded_at',)
     search_fields = ('image_url',)
+
+
+@admin.register(ViewsCount)
+class ViewsCountAdmin(admin.ModelAdmin):
+    list_display = ('ip', 'views_count', 'first_view')
