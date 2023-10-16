@@ -35,6 +35,17 @@ class ViewsCount(models.Model):
         verbose_name_plural = "Счетчик просмотров"
 
 
+class Message(models.Model):
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20)
+    text = models.TextField()
+    date_sent = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Сообщение"
+        verbose_name_plural = "Сообщения"
+
+
 @admin.register(Bid)
 class BidAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'phone', 'amount', 'created_at')
@@ -52,3 +63,8 @@ class PhotoAdmin(admin.ModelAdmin):
 @admin.register(ViewsCount)
 class ViewsCountAdmin(admin.ModelAdmin):
     list_display = ('ip', 'views_count', 'first_view')
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'text', 'date')
