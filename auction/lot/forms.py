@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bid  # Импортируем модель Bid
+from .models import Bid, Message  # Импортируем модель Bid
 
 
 class BidForm(forms.ModelForm):
@@ -21,3 +21,24 @@ class BidForm(forms.ModelForm):
         self.fields['phone'].widget.attrs.update({'class': 'input',
                                                   'placeholder': ' ',
                                                   'inputmode': 'tel'})
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['name', 'phone', 'text']
+
+    name = forms.CharField(max_length=20)
+    phone = forms.CharField(max_length=20)
+    text = forms.CharField(widget=forms.Textarea)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs.update({'class': 'input',
+                                                 'placeholder': ' '})
+        self.fields['phone'].widget.attrs.update({'class': 'input',
+                                                  'placeholder': ' ',
+                                                  'inputmode': 'tel'})
+        self.fields['text'].widget.attrs.update({'class': 'input',
+                                                 'placeholder': ' '})
