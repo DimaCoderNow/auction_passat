@@ -67,4 +67,4 @@ class ViewsCountAdmin(admin.ModelAdmin):
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'text', 'date')
+    list_display = ('name', 'phone', 'text', 'date_sent')

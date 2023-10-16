@@ -285,7 +285,18 @@ footer {
   transform: translate(-50%, -50%);
   bottom: 0;
 }
-
+.container-message {
+    display: none;
+}
+.message-form {
+    display: block;
+    transform: translate(-50%, -50%);
+    height: 580px;
+    padding: 20px;
+}
+.message-form .submit {
+    margin-top: 30px;
+}
 .input-container {
   height: 60px;
   position: relative;
@@ -295,8 +306,21 @@ footer {
 .ic1 {
   margin-top: 70px;
 }
+.icm1 {
+    margin-top: 25px
+}
 .ic2 {
   margin-top: 50px;
+}
+.ic3{
+    margin-top: 50px;
+    height: 190px;
+}
+textarea#id_text {
+    resize: none;
+    font-size: 26px;
+    padding: 10px;
+
 }
 
 .input {
@@ -368,24 +392,31 @@ footer {
     width: 23px;
     height: 23px;
 }
-.open_rules {
+.open_rules, .open-message {
     color: darkcyan;
     text-decoration: underline;
     cursor: pointer;
 }
+
 .rules {
     color: #e0e0e0;
+    background-color: #242424;
+    border: 1px solid #ffb700;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 15px 0 15px;
 }
 .rules.show-rules {
-    width: 600px;
+    width: 580px;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: #15172b;
-    border-radius: 5px;
     padding: 110px 20px;
     z-index: 999;
+    margin: 0;
+    border: none;
 }
 
 .checkbox-label {

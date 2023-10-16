@@ -25,6 +25,7 @@ from lot import views as lot
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lot.index, name="index"),
+    path('save-message/', lot.save_message, name="save_message"),
 ]
 
 if settings.DEBUG:

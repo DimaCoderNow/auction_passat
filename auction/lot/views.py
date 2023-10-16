@@ -4,7 +4,7 @@ from django.db.models import Max
 
 from auction.settings import MEDIA_URL
 from .models import Bid, Photo, ViewsCount
-from .forms import BidForm
+from .forms import BidForm, MessageForm
 
 
 def get_client_ip(request):
@@ -41,6 +41,7 @@ def index(request):
             return redirect('index')  # Перенаправьте на эту же страницу после успешной отправки ставки
     else:
         form = BidForm()
+    message_form = MessageForm()
 
     bids = Bid.objects.all()[:3]
     images = Photo.objects.all()
@@ -54,5 +55,17 @@ def index(request):
         'photo': images,
         'MEDIA_URL': MEDIA_URL,
         'dead_time_str': dead_time_str,
+        'message_form': message_form,
     }
     return render(request, template, context)
+
+
+def save_message(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['phone']:
+                form.save()
+            return redirect('index')
+    else:
+        return redirect('index')

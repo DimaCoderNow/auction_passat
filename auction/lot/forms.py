@@ -37,8 +37,9 @@ class MessageForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs.update({'class': 'input',
                                                  'placeholder': ' '})
-        self.fields['phone'].widget.attrs.update({'class': 'input',
+        self.fields['phone'].widget.attrs.update({'class': 'input input-text',
                                                   'placeholder': ' ',
                                                   'inputmode': 'tel'})
         self.fields['text'].widget.attrs.update({'class': 'input',
-                                                 'placeholder': ' '})
+                                                 'placeholder': ' ',
+                                                 'autocomplete': 'off'})
