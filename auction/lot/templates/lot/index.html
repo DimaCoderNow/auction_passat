@@ -125,6 +125,19 @@
             </div>
         </div>
 
+        <div class="rules">
+            <img src="{% static 'lot/img/close_button.svg' %}" class="close-button in-rules" onclick="closeRules()">
+            <p>
+                Администрация не несёт ответственности за действия участников аукциона, и не принимает участие в сделках,
+                проводимых покупателем и продавцом, мы предоставляем площадку - сайт исключительно для того, что бы продавец
+                нашёл потенциального покупателя.<br>
+                1. Шаг ставки 3000(три тысячи рублей)<br>
+                2. Вы являетесь победителем если Ваша цена не была никем перебита в течение 72 часов.<br>
+                3. Вам позвонят и согласуют дату регистрации в МРЭО только после окончания аукциона.<br>
+                4. Информация представлена в самом подробном виде.<br>
+                5. В исключительных случаях обращаться в окошко "Написать сообщение" с указанием вашего имени и номера телефона.<br>
+            </p>
+        </div>
     </div>
 
     <div class="overlay"></div>
@@ -145,8 +158,15 @@
            <div class="cut cut-third"></div>
            <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
         </div>
+        <div class="input-container ic2">
+            <input type="checkbox" class="checkbox">
+            <p class="checkbox-label">
+                Подтвердите согласие c <span class="open_rules" onclick="openRules()">условием аукциона</span>
+            </p>
+        </div>
         <button type="submit" class="submit">Сделать ставку</button>
     </form>
+
 
     </main>
 
@@ -168,6 +188,7 @@
         const overlay = document.querySelector('.overlay');
         const openForm = document.querySelector('.bed-footer');
         const betForm = document.querySelector('.form');
+
         let currentIndex = 0;
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -271,6 +292,15 @@
             document.body.scrollTop = 0; // Для поддержки старых браузеров
             document.documentElement.scrollTop = 0; // Для современных браузеров
         });
+        function openRules(){
+            const rulesAuction = document.querySelector('.rules');
+            rulesAuction.classList.add('show-rules');
+        }
+        function closeRules() {
+            const rulesAuction = document.querySelector('.rules');
+            rulesAuction.classList.remove('show-rules');
+        }
+
         window.addEventListener('beforeunload', function () {
             window.scrollTo(0, 0);
         });
