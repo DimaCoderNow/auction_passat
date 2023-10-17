@@ -14,7 +14,7 @@ class BidForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['user_name'].widget.attrs.update({'class': 'input',
+        self.fields['user_name'].widget.attrs.update({'class': 'input focus',
                                                       'placeholder': ' '})
         self.fields['amount'].widget.attrs.update({'class': 'input',
                                                    'placeholder': ' ',

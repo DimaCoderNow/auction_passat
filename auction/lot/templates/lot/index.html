@@ -166,8 +166,8 @@
         </div>
         <button type="submit" class="submit">Сделать ставку</button>
     </form>
-        <div class="container-message">
-            <form class="form message-form" action="/save-message/" method="POST">
+    <div class="container-message">
+        <form class="form message-form" action="/save-message/" method="POST">
             {% csrf_token %}
             <div class="input-container icm1">
                {{ message_form.name }}
@@ -184,7 +184,6 @@
                <div class="cut cut-third"></div>
                <label class="placeholder">Напишите сообщение</label>
             </div>
-
             <button type="submit" class="submit">Отправить сообщение</button>
         </form>
     </div>
@@ -210,6 +209,7 @@
         const openForm = document.querySelector('.bed-footer');
         const betForm = document.querySelector('.form');
         const messageForm = document.querySelector('.container-message')
+
 
         let currentIndex = 0;
 

@@ -212,6 +212,7 @@ ul {
     left: 100%;
 }
 .close-button.in-rules {
+    position: absolute;
     left: 504px;
     top: 17px;
 }
@@ -390,6 +391,12 @@ footer {
     width: 23px;
     height: 23px;
 }
+.checkbox-label {
+    position: absolute;
+    top: 17px;
+    left: 39px;
+
+}
 .open_rules, .open-message {
     color: darkcyan;
     text-decoration: underline;
@@ -417,12 +424,6 @@ footer {
     border: none;
 }
 
-.checkbox-label {
-    position: absolute;
-    top: 17px;
-    left: 39px;
-
-}
 
 .submit {
     background-color: #e3bc5a;

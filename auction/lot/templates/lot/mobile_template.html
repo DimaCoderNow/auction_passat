@@ -119,29 +119,69 @@
             <span class="close-button">×</span>
             <img src="" alt="Modal Image" class="modal-image">
         </div>
-
+        <div class="rules">
+            <img src="{% static 'lot/img/close_button.svg' %}" class="close-button in-rules" onclick="closeRules()">
+            <p>
+                Администрация не несёт ответственности за действия участников аукциона, и не принимает участие в сделках,
+                проводимых покупателем и продавцом, мы предоставляем площадку - сайт исключительно для того, что бы продавец
+                нашёл потенциального покупателя.<br>
+                1. Шаг ставки 3000(три тысячи рублей)<br>
+                2. Вы являетесь победителем если Ваша цена не была никем перебита в течение 72 часов.<br>
+                3. Вам позвонят и согласуют дату регистрации в МРЭО только после окончания аукциона.<br>
+                4. Информация представлена в самом подробном виде.<br>
+                5. В исключительных случаях обращаться в окошко <span class="open-message" onclick="openMessage()">"Написать сообщение"</span> с указанием вашего имени и номера телефона.<br>
+            </p>
+        </div>
     </div>
 
     <div class="overlay"></div>
-     <form class="form" action="" method="POST">
-         {% csrf_token %}
-         <div class="input-container ic1">
-            {{ form.user_name }}
-            <div class="cut"></div>
-            <label class="placeholder">Ваше имя</label>
-         </div>
-         <div class="input-container ic2">
-            {{ form.phone }}
-            <div class="cut cut-long"></div>
-            <label class="placeholder">Номер телефона</label>
-         </div>
-         <div class="input-container ic2">
-            {{ form.amount }}
-            <div class="cut "></div>
-            <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
-         </div>
-         <button type="submit" class="submit">Сделать ставку</button>
-     </form>
+    <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <div class="input-container ic1">
+           {{ form.user_name }}
+           <div class="cut"></div>
+           <label class="placeholder">Ваше имя</label>
+        </div>
+        <div class="input-container ic2">
+           {{ form.phone }}
+           <div class="cut cut-long"></div>
+           <label class="placeholder">Номер телефона</label>
+        </div>
+        <div class="input-container ic2">
+           {{ form.amount }}
+           <div class="cut "></div>
+           <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
+        </div>
+        <div class="input-container ic2">
+            <input type="checkbox" class="checkbox" required>
+            <p class="checkbox-label">
+                Подтвердите согласие c <span class="open_rules" onclick="openRules()">условием аукциона</span>
+            </p>
+        </div>
+        <button type="submit" class="submit">Сделать ставку</button>
+    </form>
+
+    <div class="container-message">
+        <form class="form message-form" action="/save-message/" method="POST">
+            {% csrf_token %}
+            <div class="input-container ic1">
+               {{ message_form.name }}
+               <div class="cut"></div>
+               <label class="placeholder">Ваше имя</label>
+            </div>
+            <div class="input-container ic2">
+               {{ message_form.phone }}
+               <div class="cut cut-second"></div>
+               <label class="placeholder">Номер телефона</label>
+            </div>
+            <div class="input-container ic3">
+               {{ message_form.text }}
+               <div class="cut cut-third"></div>
+               <label class="placeholder">Напишите сообщение</label>
+            </div>
+            <button type="submit" class="submit">Отправить сообщение</button>
+        </form>
+    </div>
 
 
     <div style="height: 100px"></div>
@@ -162,6 +202,8 @@
         const overlay = document.querySelector('.overlay');
         const openForm = document.querySelector('.open-form');
         const betForm = document.querySelector('.form');
+        const messageForm = document.querySelector('.container-message')
+        // const textField = document.getElementById('id_user_name')
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -253,6 +295,7 @@ function closeModal() {
     overlay.style.display = 'none';
     betForm.style.display = 'none';
     openForm.style.display = 'block';
+    closeMessage()
 }
 
 closeButton.onclick = closeModal;
@@ -265,6 +308,7 @@ function showForm() {
     } else {betForm.style.display = 'block';
             openForm.style.display = 'none';
             overlay.style.display = 'block';
+            document.getElementById('id_user_name').focus()
     }
 
 }
@@ -295,6 +339,25 @@ function nextButton(){
         modalImage.src = images[currentIndex].getAttribute('src');
     }
 }
+    function openRules() {
+            const rulesAuction = document.querySelector('.rules');
+            rulesAuction.classList.add('show-rules');
+        }
+        function closeRules() {
+            const rulesAuction = document.querySelector('.rules');
+            rulesAuction.classList.remove('show-rules');
+        }
+        function openMessage() {
+            closeRules()
+            openForm.style.display = 'none'
+            betForm.style.display = 'none'
+            overlay.style.display = 'block';
+            messageForm.style.display = 'block'
+            document.getElementById('id_name').focus()
+        }
+        function closeMessage() {
+            messageForm.style.display = 'none'
+        }
 
     </script>
 

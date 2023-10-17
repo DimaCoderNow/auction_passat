@@ -208,11 +208,47 @@ video {
     width: 100%;    
 }
 
-
-
-
 main {
     position: relative;
+}
+.open_rules, .open-message {
+    color: darkcyan;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.rules {
+    position: relative;
+    color: #e0e0e0;
+    background-color: #242424;
+    border: 1px solid #ffb700;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px 6px;
+}
+.close-button {
+    position: absolute;
+    display: block;
+    height: 50px;
+    top: 0;
+    transform: translateX(20px);
+    cursor: pointer;
+}
+.close-button.in-rules {
+    right: 15px;
+    top: -14px;
+}
+.rules.show-rules {
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #15172b;
+    padding: 110px 20px;
+    z-index: 999;
+    margin: 0;
+    border: none;
+    font-size: 36px;
 }
 footer {
     width: 100%;
@@ -237,17 +273,25 @@ footer:hover {
 .form {
   display: none;
   position: fixed;
-  left: 50%;
   background-color: #15172B;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 0px 50px 50px 50px;
   width: 100%;
-  transform: translateX(-50%);
   bottom: 0;
 
 }
-
+.container-message {
+    display: none;
+}
+.message-form {
+    display: block;
+    height: 800px;
+    padding: 20px;
+}
+.message-form .submit {
+    margin-top: 30px;
+}
 .title {
   color: #eee;
   font-family: sans-serif;
@@ -273,11 +317,16 @@ footer:hover {
 .ic1 {
   margin-top: 80px; /* Увеличиваем отступ сверху */
 }
-
+.icm1 {
+    margin-top: 25px
+}
 .ic2 {
   margin-top: 60px; /* Увеличиваем отступ сверху */
 }
-
+.ic3{
+    margin-top: 50px;
+    height: 190px;
+}
 .input {
   background-color: #303245;
   border-radius: 24px; /* Увеличиваем радиус границы */
@@ -290,7 +339,24 @@ footer:hover {
   padding: 8px 40px 0; /* Увеличиваем отступы внутри элемента */
   width: 100%;
 }
+.checkbox {
+    position: relative;
+    margin: 18px 0 0 5px;
+    width: 40px;
+    height: 40px;
+}
+.checkbox-label {
+    position: absolute;
+    top: 17px;
+    left: 76px;
+    font-size: 40px;
 
+}
+.input-text {
+    resize: none;
+    font-size: 26px;
+    padding: 10px;
+}
 .cut {
   background-color: #15172b;
   border-radius: 20px; /* Увеличиваем радиус границы */
@@ -302,7 +368,12 @@ footer:hover {
   transition: transform 200ms;
   width: 252px; /* Увеличиваем ширину */
 }
-
+.cut-second {
+    width: 370px;
+}
+.cut-third {
+    width: 420px;
+}
 .cut-long {
   width: 330px; /* Увеличиваем ширину */
 }
@@ -392,8 +463,6 @@ footer:hover {
 }
 
 .shimmer-text {
-
-    /* font-family: emoji; */
     border: 2px solid;
     font-size: 80px;
     background: linear-gradient( to right, #FFB700 20%, #58A931 30%, #FFB700 70%, #58A931 80% );
