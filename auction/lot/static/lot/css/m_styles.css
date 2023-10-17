@@ -216,6 +216,7 @@ main {
     text-decoration: underline;
     cursor: pointer;
 }
+
 .rules {
     position: relative;
     color: #e0e0e0;
@@ -234,6 +235,7 @@ main {
     cursor: pointer;
 }
 .close-button.in-rules {
+    display: none;
     right: 15px;
     top: -14px;
 }
@@ -327,6 +329,10 @@ footer:hover {
     margin-top: 50px;
     height: 190px;
 }
+.ic4 {
+    margin: 0;
+    height: 30px;
+}
 .input {
   background-color: #303245;
   border-radius: 24px; /* Увеличиваем радиус границы */
@@ -355,7 +361,7 @@ footer:hover {
 .input-text {
     resize: none;
     font-size: 26px;
-    padding: 10px;
+    padding: 20px 10px;
 }
 .cut {
   background-color: #15172b;

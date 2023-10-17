@@ -150,12 +150,12 @@
         <div class="input-container ic2">
            {{ form.amount }}
            <div class="cut "></div>
-           <label class="placeholder">Ваша ставка, шаг 2000 руб.</label>
+           <label class="placeholder">Ваша ставка, шаг 3000 руб.</label>
         </div>
-        <div class="input-container ic2">
+        <div class="input-container ic4">
             <input type="checkbox" class="checkbox" required>
             <p class="checkbox-label">
-                Подтвердите согласие c <span class="open_rules" onclick="openRules()">условием аукциона</span>
+                Согласен c <span class="open_rules" onclick="openRules()">условием аукциона</span>
             </p>
         </div>
         <button type="submit" class="submit">Сделать ставку</button>
@@ -342,9 +342,11 @@ function nextButton(){
     function openRules() {
             const rulesAuction = document.querySelector('.rules');
             rulesAuction.classList.add('show-rules');
+            document.querySelector('.in-rules').style.display = 'block'
         }
         function closeRules() {
             const rulesAuction = document.querySelector('.rules');
+            document.querySelector('.in-rules').style.display = 'none'
             rulesAuction.classList.remove('show-rules');
         }
         function openMessage() {
