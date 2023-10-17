@@ -35,7 +35,7 @@ def index(request):
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['amount'] >= ((max_bid or 0) + 2000):
+            if form.cleaned_data['amount'] >= ((max_bid or 0) + 3000):
                 form.save()
             # Опционально, добавьте код для обработки успешного сохранения ставки
             return redirect('index')  # Перенаправьте на эту же страницу после успешной отправки ставки
@@ -46,7 +46,7 @@ def index(request):
     bids = Bid.objects.all()[:3]
     images = Photo.objects.all()
 
-    dead_time_str = "2023,9,11"
+    dead_time_str = "2023,9,21"
 
     context = {
         'form': form,

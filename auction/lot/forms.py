@@ -17,7 +17,8 @@ class BidForm(forms.ModelForm):
         self.fields['user_name'].widget.attrs.update({'class': 'input',
                                                       'placeholder': ' '})
         self.fields['amount'].widget.attrs.update({'class': 'input',
-                                                   'placeholder': ' '})
+                                                   'placeholder': ' ',
+                                                   'step': '3000'})
         self.fields['phone'].widget.attrs.update({'class': 'input',
                                                   'placeholder': ' ',
                                                   'inputmode': 'tel'})
@@ -37,9 +38,9 @@ class MessageForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs.update({'class': 'input',
                                                  'placeholder': ' '})
-        self.fields['phone'].widget.attrs.update({'class': 'input input-text',
+        self.fields['phone'].widget.attrs.update({'class': 'input',
                                                   'placeholder': ' ',
                                                   'inputmode': 'tel'})
-        self.fields['text'].widget.attrs.update({'class': 'input',
+        self.fields['text'].widget.attrs.update({'class': 'input input-text',
                                                  'placeholder': ' ',
                                                  'autocomplete': 'off'})

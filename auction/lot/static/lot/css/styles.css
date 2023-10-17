@@ -316,12 +316,6 @@ footer {
     margin-top: 50px;
     height: 190px;
 }
-textarea#id_text {
-    resize: none;
-    font-size: 26px;
-    padding: 10px;
-
-}
 
 .input {
     background-color: #303245;
@@ -335,7 +329,11 @@ textarea#id_text {
     padding: 8px 40px 0;
     width: 100%;
 }
-
+.input-text {
+    resize: none;
+    font-size: 26px;
+    padding: 10px;
+}
 .cut {
     height: 30px;
     width: 150px;
